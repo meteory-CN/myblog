@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block head %}
+    <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
+    <script src="../static/js/myself.js"></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ post }}
+        <button type="button">submit</button>
+        <row>
+            <form method="post">
+                {{ form.csrf_token }}
+                {{ form.post( id="editor1" ,rows="10" ,cols="80") }}
+                {{ form.submit(class=btn1) }}
+            </form>
+        </row>
+
+        <script>
+            // 用CKEditor替换<textarea id="editor1">
+            // 使用默认配置
+            CKEDITOR.replace('editor1');
+        </script>
+        <script>
+            function getname() {
+                document.getElementById('1').valueOf()
+            }
+        </script>
+    </div>
+{% endblock %}
